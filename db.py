@@ -1,19 +1,11 @@
 import cNote
 
 
-def writeToFile(note, mode):
-    file = open("db.csv", mode=mode, encoding='utf-8')
-    strNote = cNote.Note.toString(note)
-    file.write(strNote)
-    file.write('\n')
-    file.close()
-
-
 def writeToList(listOfNote, mode):
     file = open("db.csv", mode='w', encoding='utf-8')
     file.seek(0)
     file.close()
-    file = open("db.csv", mode='w', encoding='utf-8')
+    file = open("db.csv", mode=mode, encoding='utf-8')
     for note in listOfNote:
         strNote = cNote.Note.toString(note)
         file.write(strNote)
