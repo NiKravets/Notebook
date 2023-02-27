@@ -45,7 +45,7 @@ def showDate(input):
     isEmpty = True
     listOfNotes = db.readFromFile()
     for note in listOfNotes:
-        if input == cNote.Note.getDate(note):
+        if input in cNote.Note.getDate(note):
             print(cNote.Note.forShow(note))
             isEmpty = False
     if isEmpty == True:
@@ -57,9 +57,10 @@ def delete(input):
     listOfNotes = db.readFromFile()
     for note in listOfNotes:
         if input == cNote.Note.getId(note):
-            listOfNotes.remove(note)
             isDeleted = True
+            listOfNotes.remove(note)
             print('Заметка удалена\n')
+    db.writeToList(listOfNotes,'a')
     if isDeleted == False:
         print('С таким id заметок нет\n')
 
